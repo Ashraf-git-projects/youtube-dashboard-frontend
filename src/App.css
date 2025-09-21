@@ -1,38 +1,232 @@
+/* App.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f3f7, #d9e2ec);
+  color: #2c3e50;
+}
+
+/* App Container */
 .App {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Headers */
+h1 {
+  text-align: center;
+  color: #1f3c88;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+h3 {
+  color: #34495e;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-container {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Base */
+.card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.05),
+              -8px -8px 20px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+/* Video Section */
+.video-details {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.video-details h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.video-details p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+.video-details iframe {
+  width: 100%;
+  height: 280px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.video-details iframe:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Edit Video Section */
+.edit-video {
+  text-align: left;
+  margin-top: 20px;
+}
+.edit-video input.edit-input,
+.edit-video textarea.edit-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.05),
+              inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.edit-video input.edit-input:focus,
+.edit-video textarea.edit-textarea:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(31, 60, 136, 0.2),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.edit-video button.edit-save-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  background-color: #1f3c88;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.edit-video button.edit-save-btn:hover {
+  background-color: #16326c;
+  transform: translateY(-2px);
+}
+
+/* Comments Section */
+.comments-section {
+  composes: card;
+}
+.comment, .comment-item {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.05),
+              -4px -4px 15px rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.comment:hover, .comment-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1),
+              -6px -6px 20px rgba(255, 255, 255, 0.7);
+}
+
+/* Comment Input */
+.comment-input, .note-input {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.comment-input input, .note-input input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.05),
+              inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.comment-input input:focus, .note-input input:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(31, 60, 136, 0.2),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+.comment-input button, .note-input button {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  background-color: #1f3c88;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.comment-input button:hover, .note-input button:hover {
+  background-color: #16326c;
+  transform: translateY(-2px);
+}
+
+/* Notes Section */
+.notes-section {
+  composes: card;
+}
+.notes-list .note, .comment-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.05),
+              -4px -4px 15px rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
-
-.App-link {
-  color: #61dafb;
+.notes-list .note:hover, .comment-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1),
+              -6px -6px 20px rgba(255, 255, 255, 0.7);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.notes-list .note button, .comment-item button {
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: none;
+  background-color: #e74c3c;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.notes-list .note button:hover, .comment-item button:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
 }
